@@ -1,24 +1,28 @@
-import { setupCounter } from './counter.js'
-import javascriptLogo from './javascript.svg'
 import './style.css'
+import axiosLogo from '/axios.svg'
+import javascriptLogo from '/javascript.svg'
+import { cleanContent, getUerInfo } from '/src/hanlders'
 import viteLogo from '/vite.svg'
+
 
 document.querySelector('#app').innerHTML = `
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
+    <img src="${viteLogo}" class="logo" alt="Vite logo" />
+    <img src="${javascriptLogo}" class="logo vanilla" alt="javascript logo" />
+    <div><img src="${axiosLogo}" class="logo" alt="axios logo" /><div/>
+    <h1>axios-wrapper-lite</h1>
     <div class="card">
-      <button id="counter" type="button"></button>
+      <button type="button" id='userInfo'>提交请求</button>
+      <button type="button" id='cleanRes'>清空响应</button>
     </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
+    <div>响应结果<div/>
+      <p class="output-the-response">
+        测试
+      </p>
   </div>
 `
-
-setupCounter(document.querySelector('#counter'))
+const subBtn = document.querySelector('#userInfo');
+const cleanBtn = document.querySelector('#cleanRes');
+const output = document.querySelector('.output-the-response');
+getUerInfo(subBtn, output);
+cleanContent(cleanBtn, output);
